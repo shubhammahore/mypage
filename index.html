@@ -1,81 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-        @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.2);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-        .heart-icon {
-      width: 100px;
-      height: 100px;
-      background: url('https://static5.depositphotos.com/1001759/463/i/450/depositphotos_4634746-stock-photo-red-heart-isolated-white-background.jpg') center/cover;
-      animation: pulse 2s infinite;
-    }
-    .circlebody {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puchki🥰😘 and Me Play Game</title>
+<style>
+    body {
+        margin: 5% 20% 30% 5%;/* Top, Right, Bottom, Left margins in percentage */
+        padding:  5% 20% 30% 5%;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .circle-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background-color: #3498db;
-      animation: rotate 5s linear infinite;
+    #changeButton {
+        margin: 5% 20% 30% 5%;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
     }
-
-    .name {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 20px;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
-    .author {
-      color: red;
-      text-align: right;
-      font-size: 10px;
-      transform: translate(-20%, -20%);
-      font-family: Georgia, 'Times New Roman', Times, serif;
-    }
-
-    @keyframes rotate {
-      from {
-        transform: rotate(50deg);
-      }
-      to {
-        transform: rotate(200deg);
-      }
-    }
-  </style>
+</style>
 </head>
 <body>
 
-  <div class="circlebody circle-container">
-    <div class="name">Its me <div class="author">shubham</div></div>
-  </div>
-  <br>
-<div>TEXT EXAMPLE</div>
-<div>............ </div>
-<hr> </hr>
-<img class="heart-icon" height="20%" width="20%" src="https://static5.depositphotos.com/1001759/463/i/450/depositphotos_4634746-stock-photo-red-heart-isolated-white-background.jpg" alt="Red Heart Image">
+<button id="changeButton">Hey Puchki🥰😘 Click Me!</button>
+
+<script>
+    const buttonTexts = ["Phir se Click kro 🫵","Puchki 🥰😘 ho tum",
+    "Tum 😎 Dramabaaz ho 🫵", "Pata hai tum bahut gussa wali ho",
+    "Pata hai Tum na Pagal ho😁","Tum bahut alag ho", "Tumko gussa jaldi aata hai",
+    "Tum Bahut achchhi ho", "Tumko tang krne pe maza aata hai 😉"];
+    const colors = [
+        "#007bff",
+        "#dc3545",
+        "#28a745",
+        "#ffc107",
+        "#17a2b8",
+        "#ff5733",
+        "#4caf50",
+        "#ff9800",
+        "#673ab7",
+    ];
+    const button = document.getElementById("changeButton");
+    let clickCount = 0;
+
+    button.addEventListener("click", function() {
+        clickCount++;
+        if (clickCount >= buttonTexts.length) {
+            clickCount = 0;
+        }
+
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        // Calculate the maximum allowed values for randomX and randomY
+        const maxX = window.innerWidth - button.offsetWidth;
+        const maxY = window.innerHeight - button.offsetHeight;
+
+        // Ensure randomX and randomY stay within the visible area
+        const randomX = Math.max(0, Math.min(maxX, Math.random() * window.innerWidth));
+        const randomY = Math.max(0, Math.min(maxY, Math.random() * window.innerHeight));
+        document.body.style.backgroundImage = `url('https://picsum.photos/200/301?${Math.random()}')`;
+        button.textContent = buttonTexts[clickCount];
+        button.style.backgroundColor = randomColor;
+        button.style.position = "absolute";
+        button.style.top = randomY + "px";
+        button.style.left = randomX + "px";
+    });
+</script>
 
 </body>
 </html>
